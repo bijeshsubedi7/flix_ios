@@ -18,8 +18,17 @@ class SuperHeroViewController: UIViewController, UICollectionViewDataSource, UIC
         super.viewDidLoad()
         
         collectionView.dataSource = self
-        
+        // Fetching the movies from the API
         fetchMovies()
+        
+        // Setting the dynamic layout
+        let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        layout.minimumInteritemSpacing = 5
+        layout.minimumLineSpacing = layout.minimumInteritemSpacing
+        let cellsPerLine: CGFloat = 2
+        let interItemSpacingTotal = layout.minimumInteritemSpacing * (cellsPerLine - 1)
+        let width = (collectionView.frame.size.width - interItemSpacingTotal) / cellsPerLine
+        layout.itemSize = CGSize(width: width, height: 3/2 * width)
     }
 
     override func didReceiveMemoryWarning() {
