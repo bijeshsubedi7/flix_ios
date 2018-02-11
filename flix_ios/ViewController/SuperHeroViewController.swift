@@ -13,9 +13,15 @@ class SuperHeroViewController: UIViewController, UICollectionViewDataSource, UIC
     @IBOutlet weak var collectionView: UICollectionView!
     
     var movies:[[String: Any]] = []
+    var refreshControl: UIRefreshControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Setting up the refresh control
+        refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(SuperHeroViewController.didPullToRefresh(_:)), for: .valueChanged)
+        collectionView.insertSubview(refreshControl, at: 0)
         
         collectionView.dataSource = self
         // Fetching the movies from the API
@@ -29,6 +35,10 @@ class SuperHeroViewController: UIViewController, UICollectionViewDataSource, UIC
         let interItemSpacingTotal = layout.minimumInteritemSpacing * (cellsPerLine - 1)
         let width = (collectionView.frame.size.width - interItemSpacingTotal) / cellsPerLine
         layout.itemSize = CGSize(width: width, height: 3/2 * width)
+    }
+    
+    @objc func didPullToRefresh(_ refreshControl: UIRefreshControl){
+        fetchMovies();
     }
 
     override func didReceiveMemoryWarning() {
@@ -49,6 +59,7 @@ class SuperHeroViewController: UIViewController, UICollectionViewDataSource, UIC
                 let movies = dataDictionary["results"] as! [[String: Any]]
                 self.movies = movies
                 self.collectionView.reloadData()
+                self.refreshControl.endRefreshing()
             }
         }
         task.resume()
