@@ -64,7 +64,7 @@ Describe any challenges encountered while building the app.
     
     **Name of your app** is a movies app displaying box office and top rental DVDs using [The Movie Database API](http://docs.themoviedb.apiary.io/#).
     
-    Time spent: **X** hours spent in total
+    Time spent: **5** hours spent in total
     
     ## User Stories
     
@@ -94,8 +94,7 @@ Describe any challenges encountered while building the app.
     ## Video Walkthrough
     
     Here's a walkthrough of implemented user stories:
-    
-    <img src='https://i.imgur.com/zgnTFfj.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+ <img src='https://i.imgur.com/zgnTFfj.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
     
     GIF created with [LiceCap](http://www.cockos.com/licecap/).
     
